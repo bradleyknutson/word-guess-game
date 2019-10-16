@@ -1,12 +1,12 @@
-function letterInWord(str, str2){
-    str = str.toLowerCase();
-    str2 = str2.toLowerCase();
-    for(let i = 0; i<str.length; i++){
-        if(str[i] === str2){
-            return true;
-        }
-    }
-    return false;
-}
 
-console.log(letterInWord("Border", "c"));
+
+var gameObject = {
+    wordCategories: {
+        cities: ['Denver', "Phoenix", "Amarillo"],
+        foods: ['Donut', 'Sandwich', 'Oatmeal']
+    },
+    chooseWord: function(arr){
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+};
+
