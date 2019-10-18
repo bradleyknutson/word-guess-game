@@ -1,6 +1,7 @@
 
 
 var guessGame = {
+    letters: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
     wins: 0,
     losses: 0,
     guessesLeft: 0,
@@ -19,9 +20,12 @@ var guessGame = {
         this.chooseWord();
         this.makeBlanks(this.chosenWord);
         this.updatePage();
-    },
-    reset: function(){
-        
+        $(document).keypress(function (e) { 
+            if(guessGame.letters.includes(e.key.toLowerCase())){
+                guessGame.guessLetter(e.key);
+                guessGame.updatePage();
+            }
+        });
     },
     picker: function(arr){
         return arr[Math.floor(Math.random() * arr.length)];
@@ -41,28 +45,68 @@ var guessGame = {
         }
     },
     updatePage: function(){
+        // update wins
         $('#wins').text(this.wins);
 
+        // Update losses
         $('#losses').text(this.losses);
 
+        // Adds blanks, spaces, and letters to word ID
+        $('#word').text('');
         for(let i=0; i<this.wordBlanks.length; i++){
             $('#word').append(this.wordBlanks[i] + ' ');
+        }
+
+        //updates guessedLetters
+        $('#guessedLetters').text('');
+        for(let i=0; i<this.guessedLetters.length; i++){
+            $('#guessedLetters').append(this.guessedLetters[i] + ' ');
         }
 
         if(guessGame.chosenCategory === 'videoGames'){
             $('#category').text('Video Games');
         }else{
             $('#category').text(guessGame.chosenCategory.charAt(0).toUpperCase() + guessGame.chosenCategory.slice(1));
-        };
+        }
     },
-    letterInWord: function(letter){
+    guessLetter: function(letter){
+        if(!this.guessedLetters.includes(letter.toUpperCase())){
+            if(this.chosenWord.includes(letter.toUpperCase())){
+                //updates wordBlanks
+                for(let i = 0; i<this.chosenWord.length; i++){
+                    if(this.chosenWord[i] === letter.toUpperCase()){
+                        this.wordBlanks[i] = letter.toUpperCase();
+                    }
+                }
+                if(this.wordBlanks.toString() === this.chosenWord.toString()){
+                    this.endGame('win');
+                }
+            }else{
+                this.guessedLetters.push(letter.toUpperCase());
+                this.guessesLeft--;
+                if(this.guessesLeft === 0){
+                    this.endGame('loss');
+                }
+            }
+        }
 
+    },
+    endGame: function(str){
+        $(document).unbind("keypress");
+        if(str === 'win'){
+            this.wins++;
+        }else if(str === 'loss'){
+            this.losses++;
+        }
     }
 };
 
 $(document).ready(function() {
 
-    guessGame.startGame(25);
-    console.log(guessGame);    
+    $('#newGame').on('click', function(){
+        guessGame.startGame();
+    })
+
+
 
 });
