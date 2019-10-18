@@ -15,17 +15,22 @@ var guessGame = {
         videoGames: ['Bayonetta', 'Portal', 'Witcher']
     },
     startGame: function(num){
-        this.guessesLeft = num;
-        this.chooseCategory();
-        this.chooseWord();
-        this.makeBlanks(this.chosenWord);
-        this.updatePage();
+        this.wordBlanks = [];
+        this.chosenWord = [];
+        this.chosenCategory = '';
+        this.guessedLetters = [];
         $(document).keypress(function (e) { 
             if(guessGame.letters.includes(e.key.toLowerCase())){
                 guessGame.guessLetter(e.key);
                 guessGame.updatePage();
             }
         });
+        this.guessesLeft = num;
+        this.chooseCategory();
+        this.chooseWord();
+        this.makeBlanks(this.chosenWord);
+        this.updatePage();
+
     },
     picker: function(arr){
         return arr[Math.floor(Math.random() * arr.length)];
@@ -63,6 +68,7 @@ var guessGame = {
             $('#guessedLetters').append(this.guessedLetters[i] + ' ');
         }
 
+        //update category
         if(guessGame.chosenCategory === 'videoGames'){
             $('#category').text('Video Games');
         }else{
@@ -95,8 +101,10 @@ var guessGame = {
         $(document).unbind("keypress");
         if(str === 'win'){
             this.wins++;
+            $('#newGame').show();
         }else if(str === 'loss'){
             this.losses++;
+            $('#newGame').show();
         }
     }
 };
@@ -104,7 +112,8 @@ var guessGame = {
 $(document).ready(function() {
 
     $('#newGame').on('click', function(){
-        guessGame.startGame();
+        guessGame.startGame(10);
+        $('#newGame').hide();
     })
 
 
