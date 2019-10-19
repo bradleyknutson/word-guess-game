@@ -10,9 +10,10 @@ var guessGame = {
     chosenCategory: '',
     guessedLetters: [],
     wordCategories: {
-        cities: ['Denver', "Phoenix", "Amarillo"],
-        foods: ['Donut', 'Sandwich', 'Oatmeal'],
-        videoGames: ['Bayonetta', 'Portal', 'Witcher']
+        cities: ['Denver', "Phoenix", "Amarillo", 'Chicago', 'Boston', 'Atlanta', 'Seattle', 'Detroit', 'Dallas', 'Baltimore', 'Nashville'],
+        foods: ['Donut', 'Sandwich', 'Oatmeal', 'Cookie', 'Chips', 'Watermelon', 'Lettuce', 'Hamburger', 'Chicken'],
+        videoGames: ['Bayonetta', 'Portal', 'Minecraft', 'Fortnite', 'Tetris', 'Overwatch', 'Destiny', 'Bioshock', 'Skyrim', 'Borderlands'],
+        colors: ['Yellow', 'Purple', 'Green', 'Magenta', 'Orange', 'Violet', 'Aquamarine', 'Chestnut', 'Jasmine']
     },
     startGame: function(num){
         this.wordBlanks = [];

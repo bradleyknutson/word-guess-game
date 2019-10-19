@@ -3,21 +3,47 @@
 }
 
 body {
-    background-color: grey;
+    background-color: darkgray;
+    color: #ffffff;
 }
 
 #hangmanImage {
     width: 100%;
-    height: auto;
+    max-height: 800px;
 }
 
 .hangman {
     height: 100%;
     border: 2px solid black;
+    background-color: #343a40;
 }
 
-#word {
+
+p {
+    font-size: 2em;
+    margin: 30px 0px;
+}
+
+.results {
+    border: 2px solid black;
+    background-color: #343a40;
+}
+
+#word, #guessedLetters{
+    text-align: center;
+    margin: 0 auto;
     width: 100%;
     font-size: 4em;
     font-weight: bold;
+}
+
+#category {
+    text-align: center;
+    font-size: 4em;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.navbar {
+    margin-bottom: 50px;
 }

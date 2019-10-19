@@ -15,26 +15,27 @@
     </script>
 </head>
 <body>
-
-
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <span class="navbar-brand mb-0 h1">Welcome to Hangman</span>
+            </div>
+            
+        </nav>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h1>HANGMAN</h1>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-8 hangman">
+                <div id="word">Start a New Game</div>
                 <img src="" alt="" id="hangmanImage">
+                <div>Guesses: <span id="guessedLetters"></span></div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 results">
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Your Category Is: <span id="category"></span></p>
+                        <p>Your Category Is: </p><p id="category"></p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 winText">
                         <p>Number of Wins: <span id="wins">0</span></p>
                     </div>
                 </div>
@@ -43,13 +44,7 @@
                         <p>Number of Losses: <span id="losses">0</span></p>
                     </div>
                 </div>
-                <p id="guessedLetters"></p>
-                <button id='newGame'>Start A New Game</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <p id="word">Press Start a New Game to Play</p>
+                <button type="button" class="btn btn-danger" id="newGame">Start New Game</button>
             </div>
         </div>
     </div>
