@@ -16,20 +16,43 @@
 </head>
 <body>
 
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <p id="wins"></p>
-                <p id="losses"></p>
-                <p id="category"></p>
-                <p id="word"></p>
+            <div class="col-lg-12">
+                <h1>HANGMAN</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 hangman">
+                <img src="" alt="" id="hangmanImage">
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Your Category Is: <span id="category"></span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Number of Wins: <span id="wins">0</span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Number of Losses: <span id="losses">0</span></p>
+                    </div>
+                </div>
                 <p id="guessedLetters"></p>
                 <button id='newGame'>Start A New Game</button>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <p id="word">Press Start a New Game to Play</p>
+            </div>
+        </div>
     </div>
-    
-
 
     <script src="./assets/javascript/game.js"></script>
 </body>

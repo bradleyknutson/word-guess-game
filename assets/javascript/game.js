@@ -4,7 +4,7 @@ var guessGame = {
     letters: ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
     wins: 0,
     losses: 0,
-    guessesLeft: 0,
+    guessesLeft: 10,
     wordBlanks: [],
     chosenWord: [],
     chosenCategory: '',
@@ -74,6 +74,8 @@ var guessGame = {
         }else{
             $('#category').text(guessGame.chosenCategory.charAt(0).toUpperCase() + guessGame.chosenCategory.slice(1));
         }
+
+        $("#hangmanImage").attr("src", './assets/images/' + this.guessesLeft.toString() + '.png');
     },
     guessLetter: function(letter){
         if(!this.guessedLetters.includes(letter.toUpperCase())){
@@ -101,15 +103,19 @@ var guessGame = {
         $(document).unbind("keypress");
         if(str === 'win'){
             this.wins++;
+            this.updatePage();
             $('#newGame').show();
         }else if(str === 'loss'){
             this.losses++;
+            this.updatePage();
             $('#newGame').show();
         }
     }
 };
 
 $(document).ready(function() {
+
+    $("#hangmanImage").attr("src", './assets/images/' + guessGame.guessesLeft.toString() + '.png');
 
     $('#newGame').on('click', function(){
         guessGame.startGame(10);
